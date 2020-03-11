@@ -8,12 +8,11 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use(logger(':method :host :status :res[content-length] - :response-time ms'));
+logger.token('host', (req) => req.hostname);
 
-app.get('/', (req, res) => {
-    res.send('hello')
-});
-
-
+// router controllers
+const routes = require('./controllers/routes');
+app.use('/vision/api', routes);
 
 const PORT = 5000;
 app.listen(PORT, () => {
