@@ -27,15 +27,11 @@ router.post('/demographics', async (req, res) => {
                         const multicultural_appearance = face_based_data.multicultural_appearance;
                         // filtering data by header req
                        const query = req.query.appearance;
-                       if(query){
-                        if(query === 'age') res.status(200).send(age_appearance);
-                        if(query === 'gender') res.status(200).send(gender_appearance);
-                        if(query === 'culture')res.status(200).send(multicultural_appearance);
-                        if(!query) res.status(200).send(concept_based_data);
-                        if(query !== 'age' || 'gender' || 'culture') res.status(400).send('something is wrong with you\'re params')
-                       }else{
-                           res.status(400).send('Ooops seems you\'ve inserted the wrong parameter')
-                       }
+                       if(query === 'age') res.status(200).send(age_appearance);
+                       if(query === 'gender') res.status(200).send(gender_appearance);
+                       if(query === 'culture')res.status(200).send(multicultural_appearance);
+                       if(!query) res.status(200).send(concept_based_data);
+                       if(query !== 'age' || 'gender' || 'culture') res.status(400).send('something is wrong with you\'re params')
                }catch(err){
                    res.status(401).send('Something went wrong somewhere')
                }
@@ -52,5 +48,8 @@ router.post('/demographics', async (req, res) => {
     }
 });
 
+router.post('/face-detection',(req, res) => {
+    res.send('Hello')
+})
 
-module.exports = router;
+module.exports = router; 
