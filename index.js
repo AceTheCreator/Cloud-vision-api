@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+require('dotenv').config();
 
 //init app
 const app = express();
+
 // middlewares
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
